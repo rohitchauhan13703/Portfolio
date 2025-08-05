@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rohit Portfolio | BCA & MCA Graduate</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    :root {
+      --color-text-primary: #111827;
+      --color-text-secondary: #6b7280;
+      --color-bg: #ffffff;
+      --color-accent: #111827;
+      --color-card-bg: #f9fafb;
+      --border-radius: 0.75rem;
+      --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-medium: 0 4px 8px rgba(0,0,0,0.1);
+      --spacing-vertical: 4rem;
+      --max-width: 1200px;
+      --transition-fast: 0.25s ease-in-out;
+    }
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    a:hover,
+    a:focus {
+      color: #2563eb;
+      outline: none;
+    }
+    /* Container */
+    .container {
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    /* Header - Sticky Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-bg);
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+    }
+    .nav-links a {
+      padding: 0.25rem 0;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+      transition: background-color var(--transition-fast);
+      border-radius: 2px;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      background: #2563eb;
+    }
+    /* Hero Section */
+    .hero {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      text-align: center;
+    }
+    /* Hero flex layout on larger screens */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 768px) {
+      .hero-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 4rem;
+      }
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1rem;
+      color: var(--color-text-primary);
+      line-height: 1.1;
+    }
+    .hero p {
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      max-width: 520px;
+      margin: 0;
+    }
+    .btn-primary {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: var(--color-accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 0.75rem 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-medium);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color var(--transition-fast), transform var(--transition-fast);
+      border: none;
+      text-align: center;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #2563eb;
+      transform: scale(1.05);
+      outline: none;
+    }
+    .hero-img {
+      flex: 1;
+      max-width: 280px;
+      aspect-ratio: 1/1;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-medium);
+      object-fit: cover;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+    }
+    /* Sections */
+    section {
+      padding-top: var(--spacing-vertical);
+      padding-bottom: var(--spacing-vertical);
+    }
+    section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--color-text-primary);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    /* About Section */
+    .about p {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+    /* Cards Container */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Card */
+    .card {
+      background-color: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-light);
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .card:hover,
+    .card:focus-within {
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-6px);
+      outline: none;
+    }
+    .card h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-text-primary);
+    }
+    .card p {
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+    /* Contact Section */
+    .contact p {
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* Responsive smaller screens */
+    @media (max-width: 640px) {
+      .nav-links {
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container">
+      <nav role="navigation" aria-label="Primary navigation">
+        <a href="#" class="logo">Rohit</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" role="banner" aria-label="Introduction">
+      <div class="container hero-content">
+        <img src="1.jpg" alt="Portrait of Rohit" class="hero-img" />
+        <div class="hero-text">
+          <h1>Hello, I am Rohit</h1>
+          <p>My Name Is Rohit Frome HIMACHAL PRADESH I Am Currently pursuing my Master of Computer Application (MCA) 
+            frome Swami Vivekanand Institute of Engineering& Technology BANUR PUNJAB.
+             I am Currently working in HTML and CSS js React to create beautiful, modern websites and applications.</p>
+          <a href="#contact" class="btn-primary" role="button">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p>
+        I am a dedicated web developer with a strong foundation in computer applications through my BCA and MCA degrees.
+        Passionate about front-end development, specializing in crafting clean, accessible, and modern user interfaces
+        using HTML and CSS. I strive to continuously learn and improve my skills to deliver the best user experience.
+      </p>
+    </section>
+
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <div class="cards" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="Bachelors in Computer Applications">
+          <h3>Bachelor of Computer Applications (BCA)</h3>
+          <p>Completed a comprehensive BCA degree, equipping me with essential programming, database, and networking skills.</p>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Masters in Computer Applications">
+          <h3>Master of Computer Applications (MCA)</h3>
+          <p>Advanced studies in computer applications with deeper focus on software development and project management.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="cards" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="HTML Skill Card">
+          <h3>HTML</h3>
+          <p>Expertise in semantic HTML5, ensuring accessibility and SEO optimized structure for web pages.</p>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="CSS Skill Card">
+          <h3>CSS</h3>
+          <p>Proficient in modern CSS (Flexbox, Grid, variables), animations, and responsive design techniques.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+    <p>Email: <a href="mailto:rohitchauhan13703@gmail.com.com">rohitchauhan13703@gmail.com</a></p>
+    
+      <p>Phone no: <a href="9418655979">9418655979</a></p
+    </section>
+  </main>
+
+  <footer>
+    copyright by ROHIT
+  </footer>
+</body>
+</html>
+
